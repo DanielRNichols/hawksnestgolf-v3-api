@@ -1,0 +1,39 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "firebase/php-jwt": "^3.0",
+        "guzzlehttp/guzzle": "^6.0",
+        "phpunit/phpunit": "^4.8"
+    },
+
+   "autoload": {
+        "psr-4": {
+            "HawksNestGolf\\Db\\": "db/",
+            "HawksNestGolf\\Repository\\": "repository/",
+            "HawksNestGolf\\Routes\\": "routes/",
+            "HawksNestGolf\\Resources\\Base\\": "resources/base/",
+            "HawksNestGolf\\Resources\\Bets\\": "resources/bets/",
+            "HawksNestGolf\\Resources\\Entries\\": "resources/entries/",
+            "HawksNestGolf\\Resources\\Events\\": "resources/events/",
+            "HawksNestGolf\\Resources\\Field\\": "resources/field/",
+            "HawksNestGolf\\Resources\\GolferResults\\": "resources/golferResults/",
+            "HawksNestGolf\\Resources\\Golfers\\": "resources/golfers/",
+            "HawksNestGolf\\Resources\\Leaderboard\\": "resources/leaderboard/",
+            "HawksNestGolf\\Resources\\Messages\\": "resources/messages/",
+            "HawksNestGolf\\Resources\\Picks\\": "resources/picks/",
+            "HawksNestGolf\\Resources\\Players\\": "resources/players/",
+            "HawksNestGolf\\Resources\\Results\\": "resources/results/",
+            "HawksNestGolf\\Resources\\Selections\\": "resources/selections/",
+            "HawksNestGolf\\Resources\\SelectionEntries\\": "resources/SelectionEntries/",
+            "HawksNestGolf\\Resources\\SelectionPicks\\": "resources/SelectionPicks/",
+            "HawksNestGolf\\Resources\\Tournaments\\": "resources/tournaments/",
+            "HawksNestGolf\\Resources\\UserLists\\": "resources/userLists/",
+            "HawksNestGolf\\Resources\\Teams\\": "resources/teams/",
+            "HawksNestGolf\\Resources\\SelectionCfg\\": "resources/selectionCfg/",
+            "HawksNestGolf\\Resources\\EventStatus\\": "resources/eventstatus/",
+            "HawksNestGolf\\Resources\\Years\\": "resources/years/",
+
+            "HawksNestGolf\\Info\\EventDetails\\": "info/eventDetails/"
+        }
+    }
+}

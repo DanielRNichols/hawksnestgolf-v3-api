@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "5ea9876e-86bf-4076-8530-fb529c485721",
+		"name": "hawksnestgolf",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "bets",
+			"description": null,
+			"item": [
+				{
+					"name": "{{baseurl}}/bets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/bets",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"bets"
+							]
+						},
+						"description": "get bets"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/bets/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/bets/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"bets",
+								"1"
+							]
+						},
+						"description": "get bet by id"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/bets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\" : \"Test Bet\",\n\"defAmount\" : 100\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/bets",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"bets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/bets",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\" : \"Test Bet Modified\",\n\"defAmount\" : 10\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/bets/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"bets",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/bets/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/bets/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"bets",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "players",
+			"description": null,
+			"item": [
+				{
+					"name": "{{baseurl}}/players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/players",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"players"
+							]
+						},
+						"description": "get players"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/players/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/players/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"players",
+								"1"
+							]
+						},
+						"description": "get player by id"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/players",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Smith\",\n    \"userName\": \"John\",\n    \"email\": \"jsmith@att.net\",\n    \"email2\": \"\",\n    \"isAdmin\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/players",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"players"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/players",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Jackson\",\n    \"userName\": \"JJ\",\n    \"email\": \"jjackson@att.net\",\n    \"email2\": \"\",\n    \"isAdmin\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/players/66",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"players",
+								"66"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/players/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/players/66",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"players",
+								"66"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f89e87fc-44b9-463b-b2f2-923e572ef97c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "001a8716-03d3-46a4-8c4e-5dd9b29a9359",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "tournaments",
+			"description": null,
+			"item": [
+				{
+					"name": "{{baseurl}}/tournaments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/tournaments",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"tournaments"
+							]
+						},
+						"description": "get tournaments"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/tournaments/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/tournaments/1",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"tournaments",
+								"1"
+							]
+						},
+						"description": "get player by id"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/tournaments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Tournament\",\n    \"isOfficial\": true,\n    \"url\": \"https://statdata.pgatour.com/r/999/2018/leaderboard-v2.json\",\n    \"\"\n\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/tournaments",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"tournaments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/tournaments",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Tournament - Modified\",\n    \"isOfficial\": false,\n    \"url\": \"https://statdata.pgatour.com/r/888/2018/leaderboard-v2.json\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/tournaments/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"tournaments",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/tournaments/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/tournaments/7",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"tournaments",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f89e87fc-44b9-463b-b2f2-923e572ef97c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "001a8716-03d3-46a4-8c4e-5dd9b29a9359",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "golfers",
+			"description": null,
+			"item": [
+				{
+					"name": "{{baseurl}}/golfers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/golfers",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"golfers"
+							]
+						},
+						"description": "get golfers"
+					},
+					"response": [
+						{
+							"id": "741bb497-4bb0-40a8-9e08-4969c778d016",
+							"name": "{{baseurl}}/golfers?orderby=worldRanking asc&top=3&skip=2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseurl}}/golfers?orderby=worldRanking asc&top=3&skip=2",
+									"host": [
+										"{{baseurl}}"
+									],
+									"path": [
+										"golfers"
+									],
+									"query": [
+										{
+											"key": "orderby",
+											"value": "worldRanking asc"
+										},
+										{
+											"key": "top",
+											"value": "3"
+										},
+										{
+											"key": "skip",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "436",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Apr 2018 14:25:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.12 (Win32) OpenSSL/1.0.1l PHP/5.5.24",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/5.5.24",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Mon Jan 18 2038 21:14:07 GMT-0600 (Central Standard Time)",
+									"httpOnly": false,
+									"domain": "localhost",
+									"path": "/",
+									"secure": false,
+									"value": "rl26fqu404smrpuruoqgj2esk0",
+									"key": "PHPSESSID"
+								}
+							],
+							"body": "[{\"id\":1668,\"pgaTourId\":46970,\"name\":\"Jon Rahm\",\"selectionName\":\"RAHM\",\"country\":\"ESP\",\"worldRanking\":3,\"fedExRanking\":6,\"image\":\"\"},{\"id\":753,\"pgaTourId\":34046,\"name\":\"Jordan Spieth\",\"selectionName\":\"SPIETH\",\"country\":\"USA\",\"worldRanking\":4,\"fedExRanking\":36,\"image\":\"JordanSpieth.jpg\"},{\"id\":688,\"pgaTourId\":22405,\"name\":\"Justin Rose\",\"selectionName\":\"ROSE\",\"country\":\"ENG\",\"worldRanking\":5,\"fedExRanking\":7,\"image\":\"JustinRose.jpg\"}]"
+						}
+					]
+				},
+				{
+					"name": "{{baseurl}}/golfers/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/golfers/884",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"golfers",
+								"884"
+							]
+						},
+						"description": "get bet by id"
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/golfers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pgaTourId\": 99999,\n    \"name\": \"Golfer New\",\n    \"selectionName\": \"New, G.\",\n    \"country\": \"USA\",\n    \"worldRanking\": 789,\n    \"fedExRanking\": 678,\n    \"image\": \"GolferNew.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/golfers",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"golfers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/golfers",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pgaTourId\": 99999,\n    \"name\": \"Golfer Modified\",\n    \"selectionName\": \"Modified, G.\",\n    \"country\": \"USA\",\n    \"worldRanking\": 789,\n    \"fedExRanking\": 678,\n    \"image\": \"Modified.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseurl}}/golfers/1916",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"golfers",
+								"1916"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{baseurl}}/golfers/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseurl}}/golfers/8",
+							"host": [
+								"{{baseurl}}"
+							],
+							"path": [
+								"golfers",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
