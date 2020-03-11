@@ -48,91 +48,86 @@ class FieldController extends \HawksNestGolf\Resources\Base\BaseController {
 
         return $theField;
     }
-    
-    public function updateFromLeaderboard($params, $response=null) {
-        $this->clear();
-        $eventId = isset($params['eventId']) ? $params['eventId'] : 0;
-        $lbGolfers = $this->getLeaderboardGolfers($eventId);
-        //var_dump($golfers);
-        if($lbGolfers) {
-            foreach($lbGolfers as $lbGolfer) {
-                $golfer = $this->getGolferIdFromPGATourId($lbGolfer->pgaTourId);
-                $golferId = $golfer ? $golfer->id : 0;
-                
-                if($golferId == 0) {
-                    $golfersController = new \HawksNestGolf\Resources\Golfers\GolfersController();
-                    $golferParams = (object)[
-                                      'pgaTourId' => $lbGolfer->pgaTourId,
-                                      'name' => $lbGolfer->name,
-                                      'selectionName' => $lbGolfer->selectionName,
-                                      'country' => $lbGolfer->country,
-                                     ];
-//                    var_dump($golferParams);
-                    $retData = $golfersController->add($golferParams, null);
-                    
-                    $golferId = $retData && isset($retData['id']) ? $retData['id'] : 0;
-                }
-                
-                $fieldEntries[] = $this->getModel((object)[
-                                      'golferId' => $golferId,
-                                      'pgaTourId' => $lbGolfer->pgaTourId,
-                                     ]);
+
+    public function updateFromCSV($params, $response=null) {
+        
+        $fieldEntries = $this->getFieldFromCSV();
+        
+        //var_dump($fieldEntries);
+        
+        $success = $this->repositoryHandler->addMultiple($fieldEntries);
+
+        if($success) {
+            $retData = array('result' => "Updated The Field"); //$this->get($item->id, array(), false);
+            $statusCode = 201;
+        }
+        else {
+            $retData = "Error Updating The Field";
+            $statusCode = 400;
+        }
+        return $this->render($response, $success, $retData, $statusCode);
+    }
+
+
+    function getFieldFromCSV()
+    {
+        //echo("In getOddsFromCSV");
+        $fileName = "M:\\TPCTheFieldWithOdds.csv";
+        //echo($fileName);
+        $data = $this->csv_to_array($fileName);
+        //var_dump($data);
+        
+        $numInField = count($data);
+
+        for($i=0; $i < $numInField; $i++)
+        {
+            $item = $data[$i];
+
+            $golferId = $item['GolferId'];
+            $pgaTourId = $item['PGATourId'];
+            $name = $item['GolferName'];
+            $oddsText = $data[$i]['Odds'];
+            $oddsRank = $data[$i]['OddsRank'];
+
+            if($golferId <=0) {
+                $errMsg = 'Error getting golferId in getOdds for '.$name;
+                var_dump($errMsg);
             }
             
-            //var_dump($fieldEntries);
-            if(isset($fieldEntries)) {
-                $lastId = $this->repositoryHandler->addMultiple($fieldEntries);
-            }
+            $field[] = new FieldEntry((object)[
+                                       'golferId' => $golferId,
+                                       'pgaTourId' => $pgaTourId,
+                                       'odds' => $oddsText,
+                                       'oddsRank' => $oddsRank
+                                      ]);
         }
-        $retData = array("id" => $lastId);
-        $success = ($lastId && ($lastId > 0));
-        $statusCode = ($success ? 201 : 400);
-        return $this->render($response, $success, $retData, $statusCode);
 
+        return($field);
     }
-    
-    private function getEvent($eventsController, $eventId, $params) {
-        $event = null;
-        if($eventId > 0) {
-            $tmpParams = array('includeRelated' => true);
-            $events = $eventsController->get($eventId, $tmpParams);
-            if($events) {
-                $event = $events[0];
-            }
+
+    function csv_to_array($filename='', $delimiter=',', $enclosure='"')
+    {
+        if(!file_exists($filename) || !is_readable($filename))
+        {
+           echo ('<br><span style="color:red">Unable to open odds file '.$filename.'</span>');
+           return 0;
         }
-        
-        return $event;
-    }
 
-    
-    
-    private function getLeaderboardGolfers($eventId) {
-        $eventsController = new \HawksNestGolf\Resources\Events\EventsController();
-        $event = $this->getEvent($eventsController, $eventId, null);
-        if($event != null) {
-            $jsonFile = $event->tournament->url;
-            $leaderboardController = new \HawksNestGolf\Resources\Leaderboard\LeaderboardController();
-            $leaderboardController->setJsonFile($jsonFile);
-            $leaderboard = $leaderboardController->get(null, null, null);
-            if($leaderboard) {
-                $golfers = isset($leaderboard['golfers']) ? $leaderboard['golfers'] : null;
+        $header = NULL;
+        $data = array();
+        if (($handle = fopen($filename, 'r')) !== FALSE)
+        {
+            $i = 0;
+            while (($row = fgetcsv($handle, 1000, $delimiter, $enclosure)) !== FALSE)
+            {
+                if(!$header)
+                    $header = $row;
+                else
+                    $data[$i++] = array_combine($header, $row);
             }
+            fclose($handle);
         }
-        
-        return isset($golfers) ? $golfers : null;
-        
+        return $data;
     }
-    
-    private function getGolferIdFromPGATourId($pgaTourId) {
-        $golfersController = new \HawksNestGolf\Resources\Golfers\GolfersController();
-
-        $tmpParams = ['filter' => 'pgaTourId='.$pgaTourId];
-        $golfers = $golfersController->get(null, $tmpParams);
-        
-        return isset($golfers) ? $golfers[0] : null;
-        
-        
-    }
-
 
 }

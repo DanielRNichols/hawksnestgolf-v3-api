@@ -20,7 +20,7 @@ class GolfersController extends \HawksNestGolf\Resources\Base\BaseController {
         $success = true;
         
         $worldRankings = $this->getWorldRankings();
-        var_dump($worldRankings);
+        //var_dump($worldRankings);
         $fedExRankings = $this->getFedExRankings();
         //var_dump($fedExRankings);
    

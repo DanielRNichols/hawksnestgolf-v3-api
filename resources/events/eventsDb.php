@@ -41,7 +41,7 @@ class EventsDb {
                           "'".$event->status."',".
                           "'".$event->url."')";
         
-         echo ($query);
+         //echo ($query);
             
          return(\HawksNestGolf\Db\DbUtils::insert($this->con, $query));
      }
@@ -57,7 +57,7 @@ class EventsDb {
                "url='".$event->url."' ".
                "where id='".$event->id."'";
  
-         echo ($query);
+         //echo ($query);
 
          return(\HawksNestGolf\Db\DbUtils::update($this->con, $query));
      }

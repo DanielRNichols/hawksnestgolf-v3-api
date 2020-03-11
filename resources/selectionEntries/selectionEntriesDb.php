@@ -73,7 +73,7 @@ class SelectionEntriesDb {
             $query = "Delete from selectionEntries where id = '".$id."'";
          }
         
-        echo ($query);
+        //echo ($query);
 
         return(\HawksNestGolf\Db\DbUtils::delete($this->con, $query));
       }

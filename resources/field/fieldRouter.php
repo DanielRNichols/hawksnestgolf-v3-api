@@ -42,8 +42,12 @@ Class FieldRouter extends \HawksNestGolf\Resources\Base\BaseRouter {
             return self::getInstance()->Post($request, $response,  $args);
         };
 
-        $postRoutes['/field/updateFromLeaderboard'] = function ($request, $response, $args) {
-            return self::getInstance()->UpdateFromLeaderboard($request, $response);
+        // $postRoutes['/field/updateFromLeaderboard'] = function ($request, $response, $args) {
+        //     return self::getInstance()->UpdateFromLeaderboard($request, $response);
+        // };
+
+        $postRoutes['/field/updatefromcsv'] = function ($request, $response, $args) {
+            return self::getInstance()->UpdateFromCSV($request, $response);
         };
 
         return $postRoutes;
@@ -68,17 +72,30 @@ Class FieldRouter extends \HawksNestGolf\Resources\Base\BaseRouter {
     }
     
     // Handle UpdateFromLeaderboard Route
-    private function UpdateFromLeaderboard($request, $response) {
-       try {
-           $params = $request->getQueryParams();
-           $retRes = self::getInstance()->controller->updateFromLeaderboard($params, $response);
-       }
-        catch (Exception $e) {
-            $errMsg = 'Error: Could not update From Leaderboard . Exception: '. $e->getMessage();
-            $retRes = $this->createErrorResponse($response, $errMsg, 400);
-        }
+    // private function UpdateFromLeaderboard($request, $response) {
+    //    try {
+    //        $params = $request->getQueryParams();
+    //        $retRes = self::getInstance()->controller->updateFromLeaderboard($params, $response);
+    //    }
+    //     catch (Exception $e) {
+    //         $errMsg = 'Error: Could not update From Leaderboard . Exception: '. $e->getMessage();
+    //         $retRes = $this->createErrorResponse($response, $errMsg, 400);
+    //     }
 
-        return $retRes;
-    }
+    //     return $retRes;
+    // }
     
- }
+    // Handle UpdateFromCSV Route
+    private function UpdateFromCSV($request, $response) {
+        try {
+            $params = $request->getQueryParams();
+            $retRes = self::getInstance()->controller->updateFromCSV($params, $response);
+        }
+         catch (Exception $e) {
+             $errMsg = 'Error: Could not update From CSV . Exception: '. $e->getMessage();
+             $retRes = $this->createErrorResponse($response, $errMsg, 400);
+         }
+ 
+         return $retRes;
+     }
+  }

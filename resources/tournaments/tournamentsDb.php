@@ -10,7 +10,7 @@ class TournamentsDb {
     }
 
     public function get ($id, $params) {
-        $select = "Select id, name, isOfficialEvent as isOfficial, leaderboardurl as url, leaderboardurl2 as url2
+        $select = "Select id, name, isOfficialEvent as isOfficial, leaderboardurl as url, leaderboardurl2 as url2, ordinal
                    from tournaments ";
         if($id && ($id > 0)) {
             $whereClause = "where tournaments.id='".$id."'";
@@ -43,9 +43,10 @@ class TournamentsDb {
          }
          
          $isOfficial = $tournament->isOfficial;
+         $ordinal = $tournament->ordinal;
          
-         $query = "insert into tournaments (name, isOfficialEvent, leaderboardurl, leaderboardurl2) 
-                   values ('".$name."','".$isOfficial."','".$url."','".$url2."')";
+         $query = "insert into tournaments (name, isOfficialEvent, leaderboardurl, leaderboardurl2, ordinal) 
+                   values ('".$name."','".$isOfficial."','".$url."','".$url2."','".$ordinal."')";
         
          //echo ($query);
          return(\HawksNestGolf\Db\DbUtils::insert($this->con, $query));
@@ -63,12 +64,14 @@ class TournamentsDb {
          }
          
          $isOfficial = $tournament->isOfficial ? 1 : 0;
+         $ordinal = $tournament->ordinal;
          
          $query = "update tournaments Set ".
                    "name='".$name."',".
                    "leaderboardurl='".$url."',".
                    "leaderboardurl2='".$url2."',".
                    "isOfficialEvent='".$isOfficial."' ".
+                   "order='".$ordinal."' ".
                    "where id='".$id."'";
         
        return(\HawksNestGolf\Db\DbUtils::update($this->con, $query));

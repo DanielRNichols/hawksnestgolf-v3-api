@@ -77,7 +77,7 @@ Class DbUtils
     }
 
     public static function update ($con, $updateQuery) {
-        var_dump($updateQuery);
+        //var_dump($updateQuery);
         $queryresult = $con->query($updateQuery);
         
         if($queryresult)

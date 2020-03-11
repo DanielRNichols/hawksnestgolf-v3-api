@@ -76,7 +76,7 @@ Class GolferResultsRouter extends \HawksNestGolf\Resources\Base\BaseRouter {
     // Handle UpdateFromLeaderboard Route
     private function UpdateFromLeaderboard($request, $response) {
        try {
-           var_dump("In UpdateFromLeaderboard ");
+           //var_dump("In UpdateFromLeaderboard ");
            
            $params = $request->getQueryParams();
            $retRes = self::getInstance()->controller->updateFromLeaderboard($params, $response);
@@ -92,7 +92,7 @@ Class GolferResultsRouter extends \HawksNestGolf\Resources\Base\BaseRouter {
     // Handle Leaderboard1 Route
     private function GetLeaderboardForXLS($request, $response) {
        try {
-           var_dump("In GetLeaderboardForXLS ");
+           //("In GetLeaderboardForXLS ");
            throw new Exception('Aborting');
            $params = $request->getQueryParams();
            $retRes = self::getInstance()->controller->getLeaderboardForXLS($params, $response);

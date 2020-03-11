@@ -172,8 +172,8 @@ class GolferResultsController extends \HawksNestGolf\Resources\Base\BaseControll
     
     public function getLeaderboardForXLS($params, $response=null) {
         $eventId = isset($params['eventId']) ? $params['eventId'] : 0;
-        var_dump($eventId);
-                  throw new Exception('Aborting');
+        //var_dump($eventId);
+        throw new Exception('Aborting');
 
         $lbGolfers = $this->getLeaderboardGolfers($eventId);
         //var_dump($lbGolfers);
@@ -199,7 +199,7 @@ class GolferResultsController extends \HawksNestGolf\Resources\Base\BaseControll
                                      ]);
             }
             
-            var_dump($results);
+            //var_dump($results);
         }
         $success = isset($results);
         $retData = ($success ? $results : []);
